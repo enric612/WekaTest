@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 
+import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.lazy.IB1;
 import weka.classifiers.functions.MultilayerPerceptron;
@@ -19,6 +20,28 @@ import weka.core.Instances;
 public class StartWeka {
 	
 	public static void main(String[] args) throws IOException, Exception {
+		
+		/*
+		 * Configuracions dels directoris de treball
+		 */
+		
+		// Directori dels models
+		String modelsFolder = "Z:/Weka/models/"; 
+		
+		// Directori de les dades de carrega
+		String testFolder = "Z:/Weka/Filtrats/";
+		
+		/*
+		 * Carrega de models
+		 */
+		
+		//Model MLP
+		Classifier mLPC = (Classifier) weka.core.SerializationHelper.read(modelsFolder+"tempo0MLP.model");
+		
+		//Model IB1
+		Classifier iB1C = (Classifier) weka.core.SerializationHelper.read(modelsFolder+"tempo0IB1.model");
+		
+		
 		
 		// Creem un buffer de lectura
 		BufferedReader breader = null;
@@ -36,15 +59,7 @@ public class StartWeka {
 		// Tanquem el buffer de lectura
 		breader.close();
 		
-		// Creem el classificador IB1
-		IB1 iB1C = new IB1();
-		// Creem el classificador MLP
-		MultilayerPerceptron mLPC = new MultilayerPerceptron();
-		
-		// Entrenem el clasificador amb les dades d'entrenament.
-		iB1C.buildClassifier(entrenament);
-		mLPC.buildClassifier(entrenament);
-		
+				
 		// Cree una copia de les dades de test
 		Instances clasificades = new Instances(test);
 		
