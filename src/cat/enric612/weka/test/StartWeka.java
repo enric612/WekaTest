@@ -11,6 +11,7 @@ import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.lazy.IB1;
 import weka.classifiers.functions.MultilayerPerceptron;
+import weka.classifiers.functions.RBFNetwork;
 import weka.classifiers.trees.J48;
 import weka.classifiers.bayes.BayesNet;
 import weka.classifiers.bayes.NaiveBayes;
@@ -40,6 +41,18 @@ public class StartWeka {
 		
 		//Model IB1
 		Classifier iB1C = (Classifier) weka.core.SerializationHelper.read(modelsFolder+"tempo0IB1.model");
+		
+		//Model RBFNetwork
+		Classifier rBFNet = (Classifier) weka.core.SerializationHelper.read(modelsFolder+"tempo0RBFNet.model");
+		
+		//Model J48
+		Classifier j48 = (Classifier) weka.core.SerializationHelper.read(modelsFolder+"tempo0J48.model");
+		
+		//Model BayesNet
+		Classifier bayesNet = (Classifier) weka.core.SerializationHelper.read(modelsFolder+"tempo0BayesNet.model");
+				
+		//Model Naive Bayes
+		Classifier nBayes = (Classifier) weka.core.SerializationHelper.read(modelsFolder+"tempo0NBayes.model");
 		
 		
 		
